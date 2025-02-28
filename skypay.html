@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Pay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+            color: white;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.2) 100%), url("skypay.webp");
+            background-size: cover;
+            background-position: center;
+            padding-left: 80px;
+        }
+
+        .content {
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .button-container button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            min-width: 160px;
+        }
+
+        .play-now {
+            background: linear-gradient(to right, #e50914, #d00000);
+            color: white;
+        }
+
+        .learn-more {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .button-container button:hover {
+            transform: scale(1.08);
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal video {
+            width: 80%;
+            height: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-section">
+    <div class="content">
+        <h1 class="hero-title">SkyPay Platform</h1>
+        <p class="hero-subtitle">SkyPay handles payment requests from digital channels (proxied via middleware) and direct user transactions, supporting credit/debit cards, PayPal, Google Pay, and Apple Pay.</p>
+        <div class="button-container">
+            <button class="play-now" onclick="openVideo()">Play Now</button>
+            <button class="learn-more">Learn More</button>
+        </div>
+    </div>
+</div>
+
+<div class="video-modal" id="videoModal">
+    <span class="close-btn" onclick="closeVideo()">&times;</span>
+    <video id="videoPlayer" controls autoplay>
+        <source src="skypay.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<script>
+    function openVideo() {
+    const modal = document.getElementById("videoModal");
+    modal.style.display = "flex";
+    const video = document.getElementById("videoPlayer");
+    video.requestFullscreen();
+    video.play();
+
+    video.onended = function() {
+        window.history.back();
+    };
+}
+
+
+    function closeVideo() {
+    const modal = document.getElementById("videoModal");
+    modal.style.display = "none";
+    const video = document.getElementById("videoPlayer");
+    video.pause();
+
+    window.history.back();
+}
+
+</script>
+
+</body>
+</html>

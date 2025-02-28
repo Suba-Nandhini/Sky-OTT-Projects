@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky-OTT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #0f1a30, #2a5298);
+        }
+        .movie-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        .play-btn {
+            transition: background 0.3s, transform 0.2s;
+        }
+        .play-btn:hover {
+            background: #0056b3; /* Change to a blue shade */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="text-white">
+<header class="flex items-center justify-between px-8 py-4 bg-gray-800 shadow-lg">
+    <h1 class="text-xl font-bold text-white">Sky OTT</h1>
+    <input id="searchInput" type="text" placeholder="Search..."
+           class="px-4 py-2 rounded-md bg-gray-700 text-white focus:outline-none border border-white"
+           onkeyup="searchMovies()">
+    <nav class="flex space-x-4">
+        <a href="#" class="text-sm font-medium text-white hover:text-gray-300">Home</a>
+        <a href="#" class="text-sm font-medium text-white hover:text-gray-300">Movies</a>
+        <a href="#" class="text-sm font-medium text-white hover:text-gray-300">Series</a>
+    </nav>
+</header>
+
+<section class="p-8">
+    <h2 class="text-3xl font-semibold mb-4 text-white">Featured Projects</h2>
+    <div id="movieList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="movie-card p-4 bg-gray-900 rounded-lg shadow-lg" data-title="Identity Management Platform">
+            <div class="w-full bg-center bg-cover h-48 rounded-md" style='background-image: url("identity.jpg");'></div>
+            <h3 class="mt-2 text-lg font-semibold text-white">Identity Management Platform</h3>
+            <button class="play-btn mt-2 bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">Get Started</button>
+        </div>
+        <div class="movie-card p-4 bg-gray-900 rounded-lg shadow-lg" data-title="Sky Pay">
+            <div class="w-full bg-center bg-cover h-48 rounded-md" style='background-image: url("skypay.webp");'></div>
+            <h3 class="mt-2 text-lg font-semibold text-white">Sky Pay</h3>
+            <button class="play-btn mt-2 bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">Get Started</button>
+        </div>
+        <div class="movie-card p-4 bg-gray-900 rounded-lg shadow-lg" data-title="Card Alignment Platform">
+            <div class="w-full bg-center bg-cover h-48 rounded-md" style='background-image: url("Card-Alignment.jpeg");'></div>
+            <h3 class="mt-2 text-lg font-semibold text-white">Card Alignment Platform</h3>
+            <button class="play-btn mt-2 bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">Get Started</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Search function
+    function searchMovies() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let movies = document.querySelectorAll(".movie-card");
+
+        movies.forEach(movie => {
+            let title = movie.getAttribute("data-title").toLowerCase();
+            if (title.includes(input)) {
+                movie.style.display = "block";
+            } else {
+                movie.style.display = "none";
+            }
+        });
+    }
+
+    // Play button functionality
+    document.querySelectorAll(".play-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            let movieTitle = this.previousElementSibling.textContent;
+            let url="";
+            switch(movieTitle){
+            case "Identity Management Platform":
+                url="identity.html";
+                break;
+            case "Sky Pay":
+                url = "skypay.html";
+                break;
+            case "Card Alignment Platform":
+                url = "card-alignment.html";
+                break;
+            default:
+                alert("No video available for this project.");
+                return;
+            }
+             window.location.href = url;
+        });
+    });
+</script>
+</body>
+</html>

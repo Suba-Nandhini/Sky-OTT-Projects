@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #0f1a30, #2a5298); /* Sky Blue Gradient */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            background: black;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .btn {
+            background: #007bff; /* Sky Blue */
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3; /* Darker Blue */
+        }
+
+        .exit-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .exit-btn:hover {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <video id="video" controls autoplay>
+        <source src="card-alignment.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="controls">
+        <button class="btn" id="fullscreen-btn">Fullscreen</button>
+        <button class="btn exit-btn" onclick="goHome()">Exit</button>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+    fullscreenBtn.addEventListener('click', () => {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    });
+
+    function goHome() {
+        window.location.href = "ott-road-show-critical-project.html";
+    }
+</script>
+
+</body>
+</html>
