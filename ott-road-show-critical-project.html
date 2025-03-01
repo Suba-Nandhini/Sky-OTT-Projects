@@ -76,13 +76,13 @@
     }
 
     // Play button functionality
-    document.querySelectorAll(".play-btn").forEach(button => {
-        button.addEventListener("click", function() {
-            let movieTitle = this.previousElementSibling.textContent;
-            let url="";
-            switch(movieTitle){
+   document.querySelectorAll(".play-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        let movieTitle = this.previousElementSibling.textContent;
+        let url = "";
+        switch (movieTitle) {
             case "Identity Management Platform":
-                url="identity.html";
+                url = "identity.html";
                 break;
             case "Sky Pay":
                 url = "skypay.html";
@@ -91,12 +91,13 @@
                 url = "card-alignment.html";
                 break;
             default:
-                alert("No video available for this project.");
+                alert("No page available for this project.");
                 return;
-            }
-             window.location.href = url;
-        });
+        }
+        window.location.href = url; // Navigate to the respective page WITHOUT playing video
     });
+});
+
 </script>
 </body>
 </html>

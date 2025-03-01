@@ -21,7 +21,7 @@
             align-items: center;
             justify-content: flex-start;
             height: 100vh;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.2) 100%), url("identity.jpg");
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.2) 100%), url("Card-Alignment.jpeg");
             background-size: cover;
             background-position: center;
             padding-left: 80px;
@@ -117,7 +117,7 @@
 
 <div class="video-modal" id="videoModal">
     <span class="close-btn" onclick="closeVideo()">&times;</span>
-    <video id="videoPlayer" controls autoplay>
+    <video id="videoPlayer" width="100%" controls>
         <source src="card-alignment.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -128,22 +128,16 @@
     const modal = document.getElementById("videoModal");
     modal.style.display = "flex";
     const video = document.getElementById("videoPlayer");
-    video.requestFullscreen();
     video.play();
-
-    video.onended = function() {
-        window.history.back(); // Go back to the previous page when video ends
-    };
+    video.requestFullscreen();
 }
 
-
-    function closeVideo() {
+function closeVideo() {
     const modal = document.getElementById("videoModal");
     modal.style.display = "none";
     const video = document.getElementById("videoPlayer");
     video.pause();
-
-    window.history.back();
+    video.currentTime = 0;
 }
 
 </script>

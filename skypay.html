@@ -116,7 +116,7 @@
 
 <div class="video-modal" id="videoModal">
     <span class="close-btn" onclick="closeVideo()">&times;</span>
-    <video id="videoPlayer" controls autoplay>
+    <video id="videoPlayer" width="100%" controls>
         <source src="skypay.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -124,26 +124,21 @@
 
 <script>
     function openVideo() {
-    const modal = document.getElementById("videoModal");
-    modal.style.display = "flex";
-    const video = document.getElementById("videoPlayer");
-    video.requestFullscreen();
-    video.play();
+     const modal = document.getElementById("videoModal");
+     modal.style.display = "flex";
+     const video = document.getElementById("videoPlayer");
+     video.play();
+     video.requestFullscreen();
+ }
 
-    video.onended = function() {
-        window.history.back();
-    };
-}
+ function closeVideo() {
+     const modal = document.getElementById("videoModal");
+     modal.style.display = "none";
+     const video = document.getElementById("videoPlayer");
+     video.pause();
+     video.currentTime = 0;
+ }
 
-
-    function closeVideo() {
-    const modal = document.getElementById("videoModal");
-    modal.style.display = "none";
-    const video = document.getElementById("videoPlayer");
-    video.pause();
-
-    window.history.back();
-}
 
 </script>
 
