@@ -73,6 +73,26 @@
         .button-container button:hover {
             transform: scale(1.08);
         }
+         /* Back Button Styling */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            transform: scale(1.08);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
 
         .video-modal {
             display: none;
@@ -102,7 +122,8 @@
     </style>
 </head>
 <body>
-
+<!-- Back Button -->
+<button class="back-button" onclick="goBack()">⬅ Back</button>
 <div class="hero-section">
     <div class="content">
         <h1 class="hero-title">Card Alignment Platform</h1>
@@ -131,6 +152,10 @@
     video.play();
     video.requestFullscreen();
 }
+ function goBack() {
+        window.history.back();
+    }
+
 
 function closeVideo() {
     const modal = document.getElementById("videoModal");
